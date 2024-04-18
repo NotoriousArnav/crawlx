@@ -1,0 +1,34 @@
+{
+    "url": "https://www.scrapethissite.com/pages/simple/",
+    "selectors": {
+        "countries": {
+            "css": "div.country",
+            "type": "Text",
+            "multiple": true,
+            "children": {
+                "name": {
+                    "css": "h3.country-name",
+                    "type": "Text"
+                },
+                "info": {
+                    "css": "div.country-info",
+                    "type": "Text",
+                    "children": {
+                        "capital": {
+                            "css": "span.country-capital",
+                            "type": "Text"
+                        },
+                        "population": {
+                            "css": "span.country-population",
+                            "type": "Text"
+                        },
+                        "area": {
+                            "css": "span.country-area",
+                            "type": "Text"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
