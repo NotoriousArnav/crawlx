@@ -16,6 +16,16 @@ class SelectorRequest(BaseModel):
 class ExtractionResponse(BaseModel):
     data: dict
 
+@app.get('/')
+async def index():
+    """
+    # Index Page of the API
+    """
+    return {
+        "message": ["""Welcome to CrawlX API""", 
+        """Use /docs to Know More about the API Endpoints"""]
+    }
+
 @app.post("/extract", response_model=ExtractionResponse)
 async def extract_data(request: SelectorRequest):
     """
