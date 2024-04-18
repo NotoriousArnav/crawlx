@@ -1,0 +1,17 @@
+{
+    "url": "http://example.com",
+    "selectors": {
+        "title": {
+            "css": "title",
+            "type": "Text"
+        },
+        "heading": {
+            "css": "h1",
+            "type": "Text"
+        },
+        "paragraph": {
+            "css": "p",
+            "type": "Text"
+        }
+    }
+}
