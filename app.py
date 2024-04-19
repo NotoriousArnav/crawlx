@@ -1,10 +1,21 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import httpx as requests
 from selectorlib import Extractor
 import yaml
 
 app = FastAPI()
+
+origins = ["*"]
+ 
+app.add_middleware(
+     CORSMiddleware,
+     allow_origins=origins,
+     allow_credentials=True,
+     allow_methods=["*"],
+     allow_headers=["*"],
+)
 
 # Request body model
 class SelectorRequest(BaseModel):
@@ -31,43 +42,6 @@ async def extract_data(request: SelectorRequest):
     """
     # Simple Page Data Extraction/Scraping API
     Used to Scrape data from a HTML Document/URL Provided. Selectors needs to be Provided to Extract and Format the Data Accordingly.
-    A Sample Request Body has been Provided Below
-    ```json
-    {
-        "url": "https://www.scrapethissite.com/pages/simple/",
-        "selectors": {
-            "countries": {
-                "css": "div.country",
-                "type": "Text",
-                "multiple": true,
-                "children": {
-                    "name": {
-                        "css": "h3.country-name",
-                        "type": "Text"
-                    },
-                    "info": {
-                        "css": "div.country-info",
-                        "type": "Text",
-                        "children": {
-                            "capital": {
-                                "css": "span.country-capital",
-                                "type": "Text"
-                            },
-                            "population": {
-                                "css": "span.country-population",
-                                "type": "Text"
-                            },
-                            "area": {
-                                "css": "span.country-area",
-                                "type": "Text"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    ```
     """
     # Check if either html or url is provided
     if not request.html and not request.url:
