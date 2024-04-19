@@ -2,6 +2,7 @@
 
 CrawlX is an API that allows you to extract structured data from HTML documents or URLs using CSS selectors. It is particularly useful for frontend developers who need to scrape data from websites for various purposes such as web scraping, data mining, and content aggregation.
 
+A Demo Project ["The Guradian Scraper"](https://github.com/NotoriousArnav/simple_alpine_axios_prj)
 ## Features
 
 - Extract data from HTML documents or URLs using CSS selectors.

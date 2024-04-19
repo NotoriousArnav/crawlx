@@ -33,8 +33,12 @@ async def index():
     # Index Page of the API
     """
     return {
-        "message": ["""Welcome to CrawlX API""", 
-        """Use /docs to Know More about the API Endpoints"""]
+        "message": [
+            """Welcome to CrawlX API""", 
+            """Use /docs to Know More about the API Endpoints""",
+            """Demo project at https://notoriousarnav.github.io/simple_alpine_axios_prj/""",
+            """Source Code Available at https://github.com/NotoriousArnav/crawlx"""
+        ]
     }
 
 @app.post("/extract", response_model=ExtractionResponse)
