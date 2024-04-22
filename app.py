@@ -1,8 +1,8 @@
-from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException
+from selectorlib import Extractor
 from pydantic import BaseModel
 import httpx as requests
-from selectorlib import Extractor
 import yaml
 
 app = FastAPI()
@@ -16,6 +16,16 @@ app.add_middleware(
      allow_methods=["*"],
      allow_headers=["*"],
 )
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1',
+    'Pragma': 'no-cache',
+    'Cache-Control': 'no-cache',
+}
 
 # Request body model
 class SelectorRequest(BaseModel):
@@ -53,7 +63,10 @@ async def extract_data(request: SelectorRequest):
 
     # If url is provided, fetch the HTML content
     if request.url:
-        response = requests.get(request.url)
+        response = requests.get(
+                    request.url,
+                    headers = headers
+                )
         if response.status_code != 200:
             raise HTTPException(status_code=400, detail="Failed to fetch URL")
 

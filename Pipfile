@@ -9,6 +9,7 @@ pydantic = "*"
 uvicorn = "*"
 httpx = "*"
 selectorlib = "*"
+cachetools = "*"
 
 [dev-packages]
 

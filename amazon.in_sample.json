@@ -1,0 +1,17 @@
+{
+  "url": "https://www.amazon.in/Crucial-Basics-2666Mhz-Laptops-Notebooks/dp/B08BBVS7WP",
+  "selectors": {
+    "heading": {
+      "css": "span#productTitle",
+      "type": "Text"
+    },
+    "price" : {
+      "css": "span.a-offscreen",
+      "type": "Text"
+    },
+"rating" : {
+      "css": "span.a-icon-alt",
+      "type": "Text"
+    }
+  }
+}
