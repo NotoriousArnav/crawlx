@@ -4,6 +4,10 @@ from selectorlib import Extractor
 from pydantic import BaseModel
 import httpx as requests
 import yaml
+import git
+
+repo = git.Repo()
+commit  = repo.head.object.hexsha[:7]
 
 app = FastAPI()
 
@@ -37,6 +41,14 @@ class SelectorRequest(BaseModel):
 class ExtractionResponse(BaseModel):
     data: dict
 
+@app.get('/ping')
+async def ping():
+    return {
+        'data': {
+            'message': 'Pong'
+        }
+    }
+
 @app.get('/')
 async def index():
     """
@@ -47,7 +59,8 @@ async def index():
             """Welcome to CrawlX API""", 
             """Use /docs to Know More about the API Endpoints""",
             """Demo project at https://notoriousarnav.github.io/simple_alpine_axios_prj/""",
-            """Source Code Available at https://github.com/NotoriousArnav/crawlx"""
+            """Source Code Available at https://github.com/NotoriousArnav/crawlx""",
+            f"""Running Commit {commit}"""
         ]
     }
 

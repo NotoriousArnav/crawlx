@@ -10,6 +10,7 @@ uvicorn = "*"
 httpx = "*"
 selectorlib = "*"
 cachetools = "*"
+gitpython = "*"
 
 [dev-packages]
 
